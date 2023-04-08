@@ -86,3 +86,7 @@ No example is needed.
 ### GamemodeUtils
 All gamemode utilities contain various methods to gather information about specific gamemodes for mod use easily.
 No example is needed, names are descriptive and simple.
+
+## Feature requests / bug reports
+If you have any feature requests or bug reports, please contact me through discord at `Buzz Bzzz bzz BZZZ The 18th#0431`
+This mod was made quickly and not tested very thoroughly, if something is wrong or seems wrong, please contact me.
