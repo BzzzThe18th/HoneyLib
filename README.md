@@ -2,7 +2,7 @@
 Honey library is a mod creation library with utils to simplify mod creation and make code look more elegant.
 
 ### How to Use
-Start by [installing the mod](https://github.com/BzzzThe18th/HoneyLib/releases/latest/HoneyLib.zip), then open the project you would like to use HoneyLib for.
+Start by [installing the mod](https://github.com/BzzzThe18th/HoneyLib/releases/latest/download/HoneyLib-v1.0.0.zip), then open the project you would like to use HoneyLib for.
 
 Under the solution explorer in Visual Studio, right-click "Dependencies"
 
