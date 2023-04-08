@@ -1,6 +1,8 @@
 # HONEY LIBRARY
 Honey library is a mod creation library with utils to simplify mod creation and make code look more elegant.
 
+![image](https://user-images.githubusercontent.com/69125495/230705218-ec4c10a4-9702-4c76-b59d-2a47bf1912be.png)
+
 ### How to Use
 Start by [installing the mod](https://github.com/BzzzThe18th/HoneyLib/releases/latest/download/HoneyLib-v1.0.0.zip), then open the project you would like to use HoneyLib for.
 
