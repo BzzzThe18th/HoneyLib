@@ -89,8 +89,11 @@ No example is needed.
 All gamemode utilities contain various methods to gather information about specific gamemodes for mod use easily.
 No example is needed, names are descriptive and simple.
 
-### Tagging Events
-These events are used to run code when a player is tagged and to get info about that tag. You can use these events like you would Utilla's OnGameInitialized, albeit it's own parameters. Here is an example of using one of these events being used to log when the local player is tagged:
+### RoomUtils
+Room utilities such as room code, no need example.
+
+### Events
+These events are used to run code when something happens in-game, such as properties update, tagging, leaving a room, etc. Here is an example of using one of these events being used to log when the local player is tagged:
 ```cs
         void Start()
         {
@@ -105,6 +108,8 @@ These events are used to run code when a player is tagged and to get info about 
             }
         }
 ```
+
+Normal events are called after original code is ran, "Pre" events run before.
 
 ## Feature requests / bug reports
 If you have any feature requests or bug reports, please contact me through discord at `Buzz Bzzz bzz BZZZ The 18th#0431`
