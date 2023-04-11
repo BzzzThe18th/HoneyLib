@@ -37,6 +37,7 @@ namespace HoneyLib.Utils
             leftController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out LeftStickClick);
             leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out LeftStick);
             rightController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out RightStickClick);
+            rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out RightStick);
         }
     }
 }
