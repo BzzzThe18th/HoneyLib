@@ -94,7 +94,6 @@ These events are used to run code when a player is tagged and to get info about 
 ```cs
         void Start()
         {
-
             HoneyLib.Events.Events.InfectionTag += PlayerTagged;
         }
 
