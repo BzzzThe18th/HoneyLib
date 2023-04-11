@@ -1,4 +1,5 @@
 ﻿using UnityEngine.XR;
+using UnityEngine;
 
 namespace HoneyLib.Utils
 {
@@ -16,7 +17,9 @@ namespace HoneyLib.Utils
         public static bool RightTrigger;
         public static bool RightGrip;
         public static bool LeftStickClick;
+        public static Vector2 LeftStick;
         public static bool RightStickClick;
+        public static Vector2 RightStick;
         
         public static void UpdateInput()
         {
@@ -32,6 +35,7 @@ namespace HoneyLib.Utils
             rightController.TryGetFeatureValue(CommonUsages.triggerButton, out RightTrigger);
             rightController.TryGetFeatureValue(CommonUsages.gripButton, out RightGrip);
             leftController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out LeftStickClick);
+            leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out LeftStick);
             rightController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out RightStickClick);
         }
     }
