@@ -89,6 +89,24 @@ No example is needed.
 All gamemode utilities contain various methods to gather information about specific gamemodes for mod use easily.
 No example is needed, names are descriptive and simple.
 
+### Tagging Events
+These events are used to run code when a player is tagged and to get info about that tag. You can use these events like you would Utilla's OnGameInitialized, albeit it's own parameters. Here is an example of using one of these events being used to log when the local player is tagged:
+```cs
+        void Start()
+        {
+
+            HoneyLib.Events.Events.InfectionTag += PlayerTagged;
+        }
+
+        void PlayerTagged(object sender, HoneyLib.Events.InfectionTagArgs args)
+        {
+            if(args.taggedPlayer == Photon.Pun.PhotonNetwork.LocalPlayer)
+            {
+                Debug.Log("I got tagged");
+            }
+        }
+```
+
 ## Feature requests / bug reports
 If you have any feature requests or bug reports, please contact me through discord at `Buzz Bzzz bzz BZZZ The 18th#0431`
 This mod was made quickly and not tested very thoroughly, if something is wrong or seems wrong, please contact me.
