@@ -7,40 +7,19 @@ namespace HoneyLib.Utils.GamemodeUtils
 {
     class BattleUtils
     {
-        public static bool IsOnBlueTeam(Player p)
-        {
-            return GameManagerPatch.battleManager.OnBlueTeam(p);
-        }
+        public static bool IsOnBlueTeam(Player p) => GameManagerPatch.battleManager.OnBlueTeam(p);
 
-        public static bool IsOnOrangeTeam(Player p)
-        {
-            return GameManagerPatch.battleManager.OnRedTeam(p);
-        }
+        public static bool IsOnOrangeTeam(Player p) => GameManagerPatch.battleManager.OnRedTeam(p);
 
-        public static bool IsOnNoTeam(Player p)
-        {
-            return GameManagerPatch.battleManager.OnNoTeam(p);
-        }
+        public static bool IsOnNoTeam(Player p) => GameManagerPatch.battleManager.OnNoTeam(p);
         
-        public static bool OnSameTeam(Player p1, Player p2)
-        {
-            return GameManagerPatch.battleManager.OnSameTeam(p1, p2);
-        }
+        public static bool OnSameTeam(Player p1, Player p2) => GameManagerPatch.battleManager.OnSameTeam(p1, p2);
 
-        public static int GetLives(Player p)
-        {
-            return GameManagerPatch.battleManager.GetPlayerLives(p);
-        }
+        public static int GetLives(Player p) => GameManagerPatch.battleManager.GetPlayerLives(p);
 
-        public static bool IsOnStunCooldown(Player p)
-        {
-            return GameManagerPatch.battleManager.PlayerInStunCooldown(p);
-        }
+        public static bool IsOnStunCooldown(Player p) => GameManagerPatch.battleManager.PlayerInStunCooldown(p);
 
-        public static bool IsOnHitCooldown(Player p)
-        {
-            return GameManagerPatch.battleManager.PlayerInHitCooldown(p);
-        }
+        public static bool IsOnHitCooldown(Player p) => GameManagerPatch.battleManager.PlayerInHitCooldown(p);
 
         public static List<Player> OrangeTeamPlayers()
         {
@@ -83,25 +62,12 @@ namespace HoneyLib.Utils.GamemodeUtils
         }
 
 
-        public static int OrangeTeamCount()
-        {
-            return OrangeTeamPlayers().Count;
-        }
+        public static int OrangeTeamCount() => OrangeTeamPlayers().Count;
         
-        public static int BlueTeamCount()
-        {
-            return BlueTeamPlayers().Count;
-        }
-        
-        public static int NoTeamCount()
-        {
-            return NoTeamPlayers().Count;
-        }
-        
-        public static int DeadCount()
-        {
-            return DeadPlayers().Count;
-        }
+        public static int BlueTeamCount() => BlueTeamPlayers().Count;
 
+        public static int NoTeamCount() => NoTeamPlayers().Count;
+        
+        public static int DeadCount() => DeadPlayers().Count;
     }
 }

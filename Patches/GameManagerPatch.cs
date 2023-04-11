@@ -12,18 +12,9 @@ namespace HoneyLib.Patches
 
         static void Postfix(GorillaGameManager __instance)
         {
-            if (__instance is GorillaBattleManager bm)
-            {
-                battleManager = bm;
-            }
-            if (__instance is GorillaHuntManager hm)
-            {
-                huntManager = hm;
-            }
-            if (__instance is GorillaTagManager tm)
-            {
-                tagManager = tm;
-            }
+            if (__instance is GorillaBattleManager bm) battleManager = bm;
+            if (__instance is GorillaHuntManager hm) huntManager = hm;
+            if (__instance is GorillaTagManager tm) tagManager = tm;
         }
     }
 }

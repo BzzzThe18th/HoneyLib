@@ -19,17 +19,10 @@ namespace HoneyLib.Utils
             return null;
         }
 
-        public static Hashtable GetPlayerProperties(Player p)
-        {
-            return p.CustomProperties;
-        }
-        public static Hashtable GetPlayerProperties(PhotonView p)
-        {
-            return p.Owner.CustomProperties;
-        }
-        public static Hashtable GetPlayerProperties(VRRig r)
-        {
-            return r.photonView.Owner.CustomProperties;
-        }
+        public static Hashtable GetPlayerProperties(Player p) => p.CustomProperties;
+
+        public static Hashtable GetPlayerProperties(PhotonView p) => p.Owner.CustomProperties;
+
+        public static Hashtable GetPlayerProperties(VRRig r) => r.photonView.Owner.CustomProperties;
     }
 }

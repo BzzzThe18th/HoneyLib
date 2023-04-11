@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using HoneyLib.Patches;
@@ -8,10 +7,7 @@ namespace HoneyLib.Utils.GamemodeUtils
 {
     class HuntUtils
     {
-        public static Player TargetOfPlayer(Player p)
-        {
-            return GameManagerPatch.huntManager.GetTargetOf(p);
-        }
+        public static Player TargetOfPlayer(Player p) => GameManagerPatch.huntManager.GetTargetOf(p);
 
         public static Player HunterOfPlayer(Player p)
         {
@@ -23,19 +19,10 @@ namespace HoneyLib.Utils.GamemodeUtils
             return p2;
         }
 
-        public static int HuntedCount()
-        {
-            return GameManagerPatch.huntManager.currentHunted.Count;
-        }
+        public static int HuntedCount() => GameManagerPatch.huntManager.currentHunted.Count;
 
-        public static List<Player> HuntedPlayers()
-        {
-            return GameManagerPatch.huntManager.currentHunted;
-        }
+        public static List<Player> HuntedPlayers() => GameManagerPatch.huntManager.currentHunted;
 
-        public static bool CheckHunted(Player p)
-        {
-            return GameManagerPatch.huntManager.currentHunted.Contains(p);
-        }
+        public static bool CheckHunted(Player p) => GameManagerPatch.huntManager.currentHunted.Contains(p);
     }
 }
