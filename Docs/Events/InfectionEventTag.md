@@ -3,7 +3,7 @@ Infection event tag events are only viable for infection and allow the same info
 ```cs
         void Start()
         {
-            Events.InfectionTagMaster += InfectionTagMaster;
+            Events.InfectionTagEvent += InfectionTagEvent;
             HarmonyPatches.ApplyHarmonyPatches();
         }
         
