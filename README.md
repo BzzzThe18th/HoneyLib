@@ -1,5 +1,5 @@
 # HONEY LIBRARY
-Honey library is a mod creation library with utils to simplify mod creation and make code look more elegant.
+Honey library is a mod creation library aimed at simplifying mod creation and make code more elegant.
 
 ![image](https://user-images.githubusercontent.com/69125495/230705218-ec4c10a4-9702-4c76-b59d-2a47bf1912be.png)
 
@@ -29,87 +29,9 @@ You can now use HoneyLib as you would any other namespace.
 
 ## Documentation
 
-HoneyLib v1.0.0 has Utilities for the Infection, Paintbrawl and Hunt gamemodes, currently allowing for easy access to an array of utilities and variables within said gamemodes. It also allows for XR Controller inputs to be used easily.
-
-### EasyInput
-EasyInput can be used as simply as running the `UpdateInput` method when you want to check for inputs and then referencing those inputs with simple variables such as `FaceButtonX`
-
-Example:
-```cs
-        void FixedUpdate()
-        {
-            EasyInput.UpdateInput();
-
-            if (EasyInput.RightStickClick) Debug.Log("O.O");
-        }
-```
-
-This will log `O.O` when the right joystick is clicked down.
-### EasyAssetLoading
-EasyAssetLoading can be used very simply through multiple methods.
-
-Example of loading a gameobject from a stream bundle:
-
-```cs
-        void OnGameInitialized(object sender, EventArgs e)
-        {
-            RB = Player.Instance.bodyCollider.attachedRigidbody;
-
-            rHandT = Player.Instance.rightHandTransform;
-            lHandT = Player.Instance.leftHandTransform;
-
-            var lT = GameObject.Find("Global/Local VRRig/Local Gorilla Player/rig/body/shoulder.L/upper_arm.L/forearm.L/hand.L").transform;
-            gauntletL = EasyAssetLoading.SetupAsset("IronMonke.Assets.gloven", "gloveL", new Vector3(-0.026f, 0.015f, -0.0015f), Quaternion.Euler(63f, 85f, 0f), lT);
-            var rT = GameObject.Find("Global/Local VRRig/Local Gorilla Player/rig/body/shoulder.R/upper_arm.R/forearm.R/hand.R").transform;
-            gauntletR = EasyAssetLoading.SetupAsset("IronMonke.Assets.gloven", "gloveR", new Vector3(0.02f, 0.015f, -0.0015f), Quaternion.Euler(63f, 275f, 180f), rT);
-
-            particlesL = gauntletL.transform.GetChild(0).GetChild(0).gameObject.GetComponent<ParticleSystem>();
-            particlesR = gauntletR.transform.GetChild(0).GetChild(0).gameObject.GetComponent<ParticleSystem>();
-
-            audioL = gauntletL.GetComponent<AudioSource>();
-            audioR = gauntletR.GetComponent<AudioSource>();
-
-            if (particlesL.isPlaying) particlesL.Stop();
-            if (particlesR.isPlaying) particlesR.Stop();
-
-            gauntletL.SetActive(false);
-            gauntletR.SetActive(false);
-
-            initialized = true;
-        }
-```
-
-This is a snippet of the new instantiation code for iron monke, it instantiates, parents, offsets and rotates the gauntlets.
-
-### GeneralUtils
-This class is for general utilities such as fetching player properties and and getting a player's rig.
-No example is needed.
-
-### GamemodeUtils
-All gamemode utilities contain various methods to gather information about specific gamemodes for mod use easily.
-No example is needed, names are descriptive and simple.
-
-### RoomUtils
-Room utilities such as room code, no need example.
-
-### Events
-These events are used to run code when something happens in-game, such as properties update, tagging, leaving a room, etc. Here is an example of using one of these events being used to log when the local player is tagged:
-```cs
-        void Start()
-        {
-            HoneyLib.Events.Events.InfectionTag += PlayerTagged;
-        }
-
-        void PlayerTagged(object sender, HoneyLib.Events.InfectionTagArgs args)
-        {
-            if(args.taggedPlayer == Photon.Pun.PhotonNetwork.LocalPlayer)
-            {
-                Debug.Log("I got tagged");
-            }
-        }
-```
-
-Normal events are called after original code is ran, "Pre" events run before.
+- [GeneralUtils](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Utils/GeneralUtils/TOC.md)
+- [GamemodeUtils](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Utils/GamemodeUtils/TOC.md)
+- [Events](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Events/TOC.md)
 
 ## Feature requests / bug reports
 If you have any feature requests or bug reports, please contact me through discord at `Buzz Bzzz bzz BZZZ The 18th#0431`
