@@ -12,3 +12,5 @@ Example:
 ```
 
 The result of this snippet would be logging `O.O` when the right stick is being pressed in.
+
+[Back to TOC](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Utils/GeneralUtils/TOC.md)
