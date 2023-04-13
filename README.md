@@ -31,6 +31,7 @@ You can now use HoneyLib as you would any other namespace.
 
 - [GeneralUtils](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Utils/GeneralUtils/TOC.md)
 - [GamemodeUtils](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Utils/GamemodeUtils/TOC.md)
+- [RoomUtils](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Utils/RoomUtils/RoomUtils.md)
 - [Events](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Events/TOC.md)
 
 ## Feature requests / bug reports
