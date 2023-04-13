@@ -13,3 +13,5 @@ Example:
     }
 ```
 This will log whenever the tag or slow sounds are detected.
+
+[Back to TOC](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Events/TOC.md)
