@@ -14,3 +14,5 @@ Example:
     }
 ```
 This will log who the local player tags or hits.
+
+[Back to TOC](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Events/TOC.md)
