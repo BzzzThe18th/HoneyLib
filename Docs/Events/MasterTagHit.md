@@ -1,5 +1,5 @@
 ### MasterTagHit
-Master tagging or hitting events detect when someone is tagged as master client. It gives more information and can be used for all three gamemodes, but only runs when the user is master client.
+Master tagging or hitting events detect when someone is tagged or hitas master client. It gives more information and can be used for all three gamemodes, but only runs when the user is master client.
 Example:
 ```cs
     void Start()
