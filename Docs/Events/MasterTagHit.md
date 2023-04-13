@@ -13,6 +13,6 @@ Example:
         Debug.Log($"HONEY MASTER Infection tag\n{e.taggingPlayer.NickName}, {e.taggedPlayer.NickName}");
     }
 ```
-This will log who got tagged and who tagged said person upon anyone tagging, due to how the game works, in hunt and infection this will be spammed while tagging until that person is tagged.
+This will log who got tagged and who tagged said person upon anyone tagging in the infection/default gamemode, due to how the game works, in hunt and infection this will be spammed while tagging until that person is tagged.
 
 [Back to TOC](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Events/TOC.md)
