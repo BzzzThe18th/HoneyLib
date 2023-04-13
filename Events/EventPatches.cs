@@ -1,125 +1,121 @@
-﻿using UnityEngine;
-using HarmonyLib;
+﻿using HarmonyLib;
 using Photon.Realtime;
 using Photon.Pun;
 
 namespace HoneyLib.Events
 {
-    [HarmonyPatch(typeof(GorillaTagManager), nameof(GorillaTagManager.ReportTag))]
-    class InfectionTag
+    [HarmonyPatch(typeof(GorillaTagManager), "ReportTag")]
+    class InfectionTagMaster
     {
+        internal static Events events = new Events();
         internal static void Postfix(Player taggedPlayer, Player taggingPlayer)
         {
-            Events events = new Events();
-            InfectionTagArgs args = new InfectionTagArgs();
+            InfectionTagMasterArgs args = new InfectionTagMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.taggingPlayer = taggingPlayer;
-            events.TriggerInfectionTag(args);
+            events.TriggerInfectionTagMaster(args);
         }
 
         internal static void Prefix(Player taggedPlayer, Player taggingPlayer)
         {
-            Events events = new Events();
-            InfectionTagArgs args = new InfectionTagArgs();
+            InfectionTagMasterArgs args = new InfectionTagMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.taggingPlayer = taggingPlayer;
-            events.TriggerPreInfectionTag(args);
+            events.TriggerPreInfectionTagMaster(args);
         }
     }
 
-    [HarmonyPatch(typeof(GorillaHuntManager), nameof(GorillaHuntManager.ReportTag))]
-    class HuntTag
+    [HarmonyPatch(typeof(GorillaHuntManager), "ReportTag")]
+    class HuntTagMaster
     {
+        internal static Events events = new Events();
         internal static void Postfix(Player taggedPlayer, Player taggingPlayer)
         {
-            Events events = new Events();
-            HuntTagArgs args = new HuntTagArgs();
+            HuntTagMasterArgs args = new HuntTagMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.taggingPlayer = taggingPlayer;
-            events.TriggerHuntTag(args);
+            events.TriggerHuntTagMaster(args);
         }
 
         internal static void Prefix(Player taggedPlayer, Player taggingPlayer)
         {
-            Events events = new Events();
-            HuntTagArgs args = new HuntTagArgs();
+            HuntTagMasterArgs args = new HuntTagMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.taggingPlayer = taggingPlayer;
-            events.TriggerPreHuntTag(args);
+            events.TriggerPreHuntTagMaster(args);
         }
     }
 
-    [HarmonyPatch(typeof(GorillaBattleManager), nameof(GorillaBattleManager.ReportSlingshotHit))]
-    class BattleHit
+    [HarmonyPatch(typeof(GorillaBattleManager), "ReportSlingshotHit")]
+    class BattleHitMaster
     {
-        internal static void Postfix(Player taggedPlayer, Vector3 hitLocation, int projectileCount, PhotonMessageInfo info)
+        internal static Events events = new Events();
+        internal static void Postfix(Player taggedPlayer, UnityEngine.Vector3 hitLocation, int projectileCount, PhotonMessageInfo info)
         {
-            Events events = new Events();
-            BattleHitArgs args = new BattleHitArgs();
+            BattleHitMasterArgs args = new BattleHitMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.hitLocation = hitLocation;
             args.projectileCount = projectileCount;
             args.info = info;
-            events.TriggerBattleHit(args);
+            events.TriggerBattleHitMaster(args);
         }
 
-        internal static void Prefix(Player taggedPlayer, Vector3 hitLocation, int projectileCount, PhotonMessageInfo info)
+        internal static void Prefix(Player taggedPlayer, UnityEngine.Vector3 hitLocation, int projectileCount, PhotonMessageInfo info)
         {
-            Events events = new Events();
-            BattleHitArgs args = new BattleHitArgs();
+            BattleHitMasterArgs args = new BattleHitMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.hitLocation = hitLocation;
             args.projectileCount = projectileCount;
             args.info = info;
-            events.TriggerPreBattleHit(args);
+            events.TriggerPreBattleHitMaster(args);
         }
     }
 
-    [HarmonyPatch(typeof(GorillaNetworking.PhotonNetworkController), nameof(GorillaNetworking.PhotonNetworkController.OnJoinedRoom))]
-    class JoinedRoom
+    [HarmonyPatch(typeof(VRRig), "PlayTagSound")]
+    class TagHitUnsafe
     {
-        internal static void Postfix()
+        internal static Events events = new Events();
+        internal static void Postfix(int soundIndex, PhotonMessageInfo info)
         {
-            Events events = new Events();
-            events.TriggerJoinedRoom();
+            if (soundIndex == 0 || soundIndex == 5)
+            {
+                TagHitUnsafeArgs args = new TagHitUnsafeArgs();
+                args.info = info;
+                events.TriggerTagHitUnsafe(args);
+            }
         }
-
-        internal static void Prefix()
+        internal static void Prefix(int soundIndex, PhotonMessageInfo info)
         {
-            Events events = new Events();
-            events.TriggerPreJoinedRoom();
+            if (soundIndex == 0 || soundIndex == 5)
+            {
+                TagHitUnsafeArgs args = new TagHitUnsafeArgs();
+                args.info = info;
+                events.TriggerPreTagHitUnsafe(args);
+            }
         }
     }
 
-    [HarmonyPatch(typeof(GorillaNetworking.PhotonNetworkController), nameof(GorillaNetworking.PhotonNetworkController.OnLeftRoom))]
-    class LeftRoom
+    [HarmonyPatch(typeof(PhotonView), "RPC", new System.Type[] { typeof(string), typeof(RpcTarget), typeof(object[]) })]
+    class TagHitLocal
     {
-        internal static void Postfix()
+        internal static Events events = new Events();
+        internal static void Postfix(string methodName, RpcTarget target, params object[] parameters)
         {
-            Events events = new Events();
-            events.TriggerLeftRoom();
+            if (methodName == "ReportTagRPC" || methodName == "ReportSlingshotHit")
+            {
+                TagHitLocalArgs args = new TagHitLocalArgs();
+                args.taggedPlayer = (Player)parameters[0];
+                events.TriggerTagHitLocal(args);
+            }
         }
-
-        internal static void Prefix()
+        internal static void Prefix(string methodName, RpcTarget target, params object[] parameters)
         {
-            Events events = new Events();
-            events.TriggerPreLeftRoom();
-        }
-    }
-
-    [HarmonyPatch(typeof(GorillaGameManager), nameof(GorillaGameManager.OnPlayerPropertiesUpdate))]
-    class PropetiesUpdate
-    {
-        internal static void Postfix()
-        {
-            Events events = new Events();
-            events.TriggerPropertiesUpdate();
-        }
-
-        internal static void Prefix()
-        {
-            Events events = new Events();
-            events.TriggerPrePropertiesUpdate();
+            if (methodName == "ReportTagRPC" || methodName == "ReportSlingshotHit")
+            {
+                TagHitLocalArgs args = new TagHitLocalArgs();
+                args.taggedPlayer = (Player)parameters[0];
+                events.TriggerPreTagHitLocal(args);
+            }
         }
     }
 }

@@ -7,48 +7,65 @@ namespace HoneyLib.Events
 {
     public class Events
     {
-        public static event EventHandler<InfectionTagArgs> InfectionTag;
-        public static event EventHandler<InfectionTagArgs> PreInfectionTag;
-        public static event EventHandler<HuntTagArgs> HuntTag;
-        public static event EventHandler<HuntTagArgs> PreHuntTag;
-        public static event EventHandler<BattleHitArgs> BattleHit;
-        public static event EventHandler<BattleHitArgs> PreBattleHit;
-        public static event EventHandler JoinedRoom;
-        public static event EventHandler PreJoinedRoom;
-        public static event EventHandler LeftRoom;
-        public static event EventHandler PreLeftRoom;
-        public static event EventHandler PropertiesUpdate;
-        public static event EventHandler PrePropertiesUpdate;
+        public static EventHandler<InfectionTagMasterArgs> InfectionTagMaster;
+        public static EventHandler<InfectionTagMasterArgs> PreInfectionTagMaster;
+        public static EventHandler<InfectionTagEventArgs> InfectionTagEvent;
+        public static EventHandler<HuntTagMasterArgs> HuntTagMaster;
+        public static EventHandler<HuntTagMasterArgs> PreHuntTagMaster;
+        public static EventHandler<BattleHitMasterArgs> BattleHitMaster;
+        public static EventHandler<BattleHitMasterArgs> PreBattleHitMaster;
+        public static EventHandler JoinedRoom;
+        public static EventHandler LeftRoom;
+        public static EventHandler<TagHitUnsafeArgs> TagHitUnsafe;
+        public static EventHandler<TagHitUnsafeArgs> PreTagHitUnsafe;
+        public static EventHandler<TagHitLocalArgs> TagHitLocal;
+        public static EventHandler<TagHitLocalArgs> PreTagHitLocal;
 
-        public virtual void TriggerInfectionTag(InfectionTagArgs args) => InfectionTag?.Invoke(this, args);
-        public virtual void TriggerPreInfectionTag(InfectionTagArgs args) => PreInfectionTag?.Invoke(this, args);
-        public virtual void TriggerHuntTag(HuntTagArgs args) =>  HuntTag?.Invoke(this, args);
-        public virtual void TriggerPreHuntTag(HuntTagArgs args) => PreHuntTag?.Invoke(this, args);
-        public virtual void TriggerBattleHit(BattleHitArgs args) => BattleHit.Invoke(this, args);
-        public virtual void TriggerPreBattleHit(BattleHitArgs args) => PreBattleHit.Invoke(this, args);
+        public virtual void TriggerInfectionTagMaster(InfectionTagMasterArgs args) => InfectionTagMaster?.Invoke(this, args);
+        public virtual void TriggerPreInfectionTagMaster(InfectionTagMasterArgs args) => PreInfectionTagMaster?.Invoke(this, args);
+        public virtual void TriggerInfectionTagEvent(InfectionTagEventArgs args) => InfectionTagEvent?.Invoke(this, args);
+        public virtual void TriggerHuntTagMaster(HuntTagMasterArgs args) =>  HuntTagMaster?.Invoke(this, args);
+        public virtual void TriggerPreHuntTagMaster(HuntTagMasterArgs args) => PreHuntTagMaster?.Invoke(this, args);
+        public virtual void TriggerBattleHitMaster(BattleHitMasterArgs args) => BattleHitMaster.Invoke(this, args);
+        public virtual void TriggerPreBattleHitMaster(BattleHitMasterArgs args) => PreBattleHitMaster.Invoke(this, args);
         public virtual void TriggerJoinedRoom() => JoinedRoom.Invoke(this, EventArgs.Empty);
-        public virtual void TriggerPreJoinedRoom() => PreJoinedRoom.Invoke(this, EventArgs.Empty);
         public virtual void TriggerLeftRoom() => LeftRoom.Invoke(this, EventArgs.Empty);
-        public virtual void TriggerPreLeftRoom() => PreLeftRoom.Invoke(this, EventArgs.Empty);
-        public virtual void TriggerPropertiesUpdate() => PropertiesUpdate.Invoke(this, EventArgs.Empty);
-        public virtual void TriggerPrePropertiesUpdate() => PrePropertiesUpdate.Invoke(this, EventArgs.Empty);
+        public virtual void TriggerTagHitUnsafe(TagHitUnsafeArgs args) => TagHitUnsafe?.Invoke(this, args);
+        public virtual void TriggerPreTagHitUnsafe(TagHitUnsafeArgs args) => PreTagHitUnsafe?.Invoke(this, args);
+        public virtual void TriggerTagHitLocal(TagHitLocalArgs args) => TagHitLocal?.Invoke(this, args);
+        public virtual void TriggerPreTagHitLocal(TagHitLocalArgs args) => PreTagHitLocal?.Invoke(this, args);
     }
 
-    public class InfectionTagArgs : EventArgs
+    public class InfectionTagMasterArgs : EventArgs
     {
         public Player taggedPlayer { get; set; }
         public Player taggingPlayer { get; set; }
     }
-    public class HuntTagArgs : EventArgs
+    public class InfectionTagEventArgs : EventArgs
     {
         public Player taggedPlayer { get; set; }
         public Player taggingPlayer { get; set; }
     }
-    public class BattleHitArgs : EventArgs
+    public class HuntTagMasterArgs : EventArgs
+    {
+        public Player taggedPlayer { get; set; }
+        public Player taggingPlayer { get; set; }
+    }
+    public class BattleHitMasterArgs : EventArgs
     {
         public Player taggedPlayer { get; set; }
         public Vector3 hitLocation { get; set; }
         public int projectileCount { get; set; }
         public PhotonMessageInfo info { get; set; }
+    }
+    public class TagHitUnsafeArgs : EventArgs
+    {
+        public PhotonMessageInfo info { get; set; }
+    }
+    public class TagHitLocalArgs : EventArgs
+    {
+        public RaycastHit hitInfo { get; set; }
+        public bool isBodyTag { get; set; }
+        public Player taggedPlayer { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using HoneyLib.Patches;
 
 namespace HoneyLib.Utils.GamemodeUtils
 {
-    class BattleUtils
+    public class BattleUtils
     {
         public static bool IsOnBlueTeam(Player p) => GameManagerPatch.battleManager.OnBlueTeam(p);
 

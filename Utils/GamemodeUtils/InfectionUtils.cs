@@ -4,7 +4,7 @@ using HoneyLib.Patches;
 
 namespace HoneyLib.Utils.GamemodeUtils
 {
-    class InfectionUtils
+    public class InfectionUtils
     {
         public static int InfectedCount() => GameManagerPatch.tagManager.currentInfected.Count;
 

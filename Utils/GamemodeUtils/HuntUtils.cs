@@ -5,7 +5,7 @@ using HoneyLib.Patches;
 
 namespace HoneyLib.Utils.GamemodeUtils
 {
-    class HuntUtils
+    public class HuntUtils
     {
         public static Player TargetOfPlayer(Player p) => GameManagerPatch.huntManager.GetTargetOf(p);
 
