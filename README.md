@@ -34,6 +34,8 @@ You can now use HoneyLib as you would any other namespace.
 - [RoomUtils](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Utils/RoomUtils/RoomUtils.md)
 - [Events](https://github.com/BzzzThe18th/HoneyLib/blob/main/Docs/Events/TOC.md)
 
+I am aware the documenation is inconsistent and unprofessional, writing has always been a struggle for me.
+
 ## Feature requests / bug reports
 If you have any feature requests or bug reports, please contact me through discord at `Buzz Bzzz bzz BZZZ The 18th#0431`
 This mod was made quickly and not tested very thoroughly, if something is wrong or seems wrong, please contact me.
