@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using Photon.Pun;
-using HoneyLib.Events;
+﻿using Photon.Pun;
 
 namespace HoneyLib.Events
 {
@@ -9,9 +7,8 @@ namespace HoneyLib.Events
         Events events = new Events();
         public override void OnJoinedRoom()
         {
-            if(Events.JoinedRoom != null)
+            if (Events.JoinedRoom != null)
             {
-                base.OnJoinedRoom();
                 events.TriggerJoinedRoom();
                 Utils.RoomUtils.RoomUtils.InRoom = true;
             }
@@ -19,10 +16,8 @@ namespace HoneyLib.Events
 
         public override void OnLeftRoom()
         {
-            if(Events.LeftRoom != null)
+            if (Events.LeftRoom != null)
             {
-                base.OnLeftRoom();
-                Events events = new Events();
                 events.TriggerLeftRoom();
                 Utils.RoomUtils.RoomUtils.InRoom = false;
             }

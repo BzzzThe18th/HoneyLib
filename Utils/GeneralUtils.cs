@@ -4,7 +4,7 @@ using Photon.Realtime;
 
 namespace HoneyLib.Utils
 {
-    class GeneralUtils
+    public class GeneralUtils
     {
         public static VRRig RigOfPlayer(Player p)
         {

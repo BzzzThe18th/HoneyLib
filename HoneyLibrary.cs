@@ -7,7 +7,6 @@ namespace HoneyLib
     {
         void Awake()
         {
-            gameObject.AddComponent<Events.HoneyLibCallbacks>();
             gameObject.AddComponent<Events.EventListener>();
             HarmonyPatches.ApplyHarmonyPatches();
         }
