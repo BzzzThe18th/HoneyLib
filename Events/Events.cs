@@ -18,7 +18,7 @@ namespace HoneyLib.Events
         public static EventHandler<TagHitUnsafeArgs> PreTagHitUnsafe;
         public static EventHandler<TagHitLocalArgs> TagHitLocal;
         public static EventHandler<TagHitLocalArgs> PreTagHitLocal;
-        public static EventHandler JoinedRoom;
+        public static EventHandler<RoomArgs> JoinedRoom;
         public static EventHandler LeftRoom;
 
         public virtual void TriggerInfectionTagMaster(InfectionTagMasterArgs args) => InfectionTagMaster?.SafeInvoke(this, args);
@@ -32,7 +32,7 @@ namespace HoneyLib.Events
         public virtual void TriggerPreTagHitUnsafe(TagHitUnsafeArgs args) => PreTagHitUnsafe?.SafeInvoke(this, args);
         public virtual void TriggerTagHitLocal(TagHitLocalArgs args) => TagHitLocal?.SafeInvoke(this, args);
         public virtual void TriggerPreTagHitLocal(TagHitLocalArgs args) => PreTagHitLocal?.SafeInvoke(this, args);
-        public virtual void TriggerJoinedRoom() => JoinedRoom.SafeInvoke(this, EventArgs.Empty);
+        public virtual void TriggerJoinedRoom(RoomArgs args) => JoinedRoom.SafeInvoke(this, args);
         public virtual void TriggerLeftRoom() => LeftRoom.SafeInvoke(this, EventArgs.Empty);
     }
 
@@ -67,5 +67,9 @@ namespace HoneyLib.Events
         public RaycastHit hitInfo { get; set; }
         public bool isBodyTag { get; set; }
         public Player taggedPlayer { get; set; }
+    }
+    public class RoomArgs : EventArgs
+    {
+        public string gamemode { get; set; }
     }
 }

@@ -9,7 +9,14 @@ namespace HoneyLib.Events
         {
             if (Events.JoinedRoom != null)
             {
-                events.TriggerJoinedRoom();
+                string gamemode = "unassigned";
+                if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("gameMode", out var gamemodeObject))
+                {
+                    gamemode = gamemodeObject as string;
+                }
+                RoomArgs args = new RoomArgs();
+                args.gamemode = gamemode;
+                events.TriggerJoinedRoom(args);
                 Utils.RoomUtils.RoomUtils.InRoom = true;
             }
         }
