@@ -12,24 +12,24 @@ namespace HoneyLib.Utils
             return AssetBundle.LoadFromStream(stream);
         }
 
-        public static GameObject LoadAssetToPrefab(Assembly a, string assetDirectory, string gameObjectName)
+        public static object LoadAssetToPrefab(Assembly a, string assetDirectory, string gameObjectName)
         {
             var ab = LoadBundle(a, assetDirectory);
-            var go = ab.LoadAsset<GameObject>(gameObjectName);
+            var obj = ab.LoadAsset(gameObjectName);
             ab.Unload(false);
-            return go;
+            return obj;
         }
 
         public static GameObject InstantiateAsset(Assembly a, string assetDirectory, string gameObjectName)
         {
-            return GameObject.Instantiate(LoadAssetToPrefab(a, assetDirectory, gameObjectName));
+            return GameObject.Instantiate((GameObject)LoadAssetToPrefab(a, assetDirectory, gameObjectName));
         }
 
         public static GameObject SetupAsset(Assembly a, string assetDirectory, string gameObjectName, Vector3 pos, Quaternion eulers, Transform parent)
         {
             var go = InstantiateAsset(a, assetDirectory, gameObjectName);
             go.transform.localPosition = pos;
-            go.transform.localRotation = Quaternion.Euler(eulers.x,eulers.y,eulers.z);
+            go.transform.rotation = Quaternion.Euler(eulers.x,eulers.y,eulers.z);
             go.transform.SetParent(parent, false);
             return go;
         }   

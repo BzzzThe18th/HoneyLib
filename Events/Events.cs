@@ -20,6 +20,7 @@ namespace HoneyLib.Events
         public static EventHandler<TagHitLocalArgs> PreTagHitLocal;
         public static EventHandler<RoomArgs> JoinedRoom;
         public static EventHandler LeftRoom;
+        public static EventHandler<OtherLeaveJoinArgs> OtherLeftRoom;
 
         public virtual void TriggerInfectionTagMaster(InfectionTagMasterArgs args) => InfectionTagMaster?.SafeInvoke(this, args);
         public virtual void TriggerPreInfectionTagMaster(InfectionTagMasterArgs args) => PreInfectionTagMaster?.SafeInvoke(this, args);
@@ -34,6 +35,7 @@ namespace HoneyLib.Events
         public virtual void TriggerPreTagHitLocal(TagHitLocalArgs args) => PreTagHitLocal?.SafeInvoke(this, args);
         public virtual void TriggerJoinedRoom(RoomArgs args) => JoinedRoom.SafeInvoke(this, args);
         public virtual void TriggerLeftRoom() => LeftRoom.SafeInvoke(this, EventArgs.Empty);
+        public virtual void TriggerOtherLeftRoom(OtherLeaveJoinArgs args) => OtherLeftRoom.SafeInvoke(this, args);
     }
 
     public class InfectionTagMasterArgs : EventArgs
@@ -71,5 +73,10 @@ namespace HoneyLib.Events
     public class RoomArgs : EventArgs
     {
         public string gamemode { get; set; }
+    }
+
+    public class OtherLeaveJoinArgs : EventArgs
+    {
+        public Player otherPlayer;
     }
 }

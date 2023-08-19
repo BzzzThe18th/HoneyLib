@@ -1,8 +1,9 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 
 namespace HoneyLib.Events
 {
-    class HoneyLibCallbacks : MonoBehaviourPunCallbacks
+    class HoneyLibCallbacks : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         Events events = new Events();
         public override void OnJoinedRoom()
@@ -27,6 +28,18 @@ namespace HoneyLib.Events
             {
                 events.TriggerLeftRoom();
                 Utils.RoomUtils.RoomUtils.InRoom = false;
+            }
+        }
+
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            base.OnPlayerLeftRoom(otherPlayer);
+            if (Events.OtherLeftRoom != null)
+            {
+                OtherLeaveJoinArgs args = new OtherLeaveJoinArgs();
+                args.otherPlayer = otherPlayer;
+
+                events.TriggerOtherLeftRoom(args);
             }
         }
     }
