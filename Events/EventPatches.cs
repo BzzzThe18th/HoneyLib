@@ -10,6 +10,9 @@ namespace HoneyLib.Events
         internal static Events events = new Events();
         internal static void Postfix(Player taggedPlayer, Player taggingPlayer)
         {
+            if (Events.InfectionTagMaster == null)
+                return;
+
             InfectionTagMasterArgs args = new InfectionTagMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.taggingPlayer = taggingPlayer;
@@ -18,6 +21,9 @@ namespace HoneyLib.Events
 
         internal static void Prefix(Player taggedPlayer, Player taggingPlayer)
         {
+            if (Events.PreInfectionTagMaster == null)
+                return;
+
             InfectionTagMasterArgs args = new InfectionTagMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.taggingPlayer = taggingPlayer;
@@ -31,6 +37,9 @@ namespace HoneyLib.Events
         internal static Events events = new Events();
         internal static void Postfix(Player taggedPlayer, Player taggingPlayer)
         {
+            if (Events.HuntTagMaster == null)
+                return;
+
             HuntTagMasterArgs args = new HuntTagMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.taggingPlayer = taggingPlayer;
@@ -39,6 +48,9 @@ namespace HoneyLib.Events
 
         internal static void Prefix(Player taggedPlayer, Player taggingPlayer)
         {
+            if (Events.PreHuntTagMaster == null)
+                return;
+
             HuntTagMasterArgs args = new HuntTagMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.taggingPlayer = taggingPlayer;
@@ -52,6 +64,9 @@ namespace HoneyLib.Events
         internal static Events events = new Events();
         internal static void Postfix(Player taggedPlayer, UnityEngine.Vector3 hitLocation, int projectileCount, PhotonMessageInfo info)
         {
+            if (Events.BattleHitMaster == null)
+                return;
+
             BattleHitMasterArgs args = new BattleHitMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.hitLocation = hitLocation;
@@ -62,6 +77,9 @@ namespace HoneyLib.Events
 
         internal static void Prefix(Player taggedPlayer, UnityEngine.Vector3 hitLocation, int projectileCount, PhotonMessageInfo info)
         {
+            if (Events.PreBattleHitMaster == null)
+                return;
+
             BattleHitMasterArgs args = new BattleHitMasterArgs();
             args.taggedPlayer = taggedPlayer;
             args.hitLocation = hitLocation;
