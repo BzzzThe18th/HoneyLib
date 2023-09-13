@@ -1,10 +1,10 @@
 ﻿using UnityEngine.XR;
 using UnityEngine;
-using HarmonyLib;
+using System;
 
 namespace HoneyLib.Utils
 {
-    public static class EasyInput
+    public class EasyInput : MonoBehaviour
     {
         private static XRNode lNode = XRNode.LeftHand;
         private static XRNode rNode = XRNode.RightHand;
@@ -21,6 +21,7 @@ namespace HoneyLib.Utils
         public static Vector2 LeftStick;
         public static bool RightStickClick;
         public static Vector2 RightStick;
+        public string platform { get; internal set; }
 
         //oxr
         static bool _FaceButtonX;
@@ -36,7 +37,12 @@ namespace HoneyLib.Utils
         static bool _RightStickClick;
         static Vector2 _RightStick;
         
+        [Obsolete("Input updating manually is now obselete for performance reasons. REMOVE THIS METHOD INVOCATION FROM YOUR CODE")]
         public static void UpdateInput()
+        {
+        }
+
+        void FixedUpdate()
         {
             InputDevice leftController = InputDevices.GetDeviceAtXRNode(lNode);
             InputDevice rightController = InputDevices.GetDeviceAtXRNode(rNode);
@@ -65,12 +71,12 @@ namespace HoneyLib.Utils
             //I do not know of any way to get stick clicks through controller input poller, or other methods, when using steamvr
 
             //get platform for stick differentiation
-            var isSteam = (string)Traverse.Create(GorillaNetworking.PlayFabAuthenticator.instance).Field("platform").GetValue() == "Steam";
+            var isSteam = platform == "Steam";
 
             LeftStickClick = _LeftStickClick;
             LeftStick = isSteam ? ControllerInputPoller.Primary2DAxis(lNode) : _LeftStick;
             RightStickClick = _RightStickClick;
             RightStick = isSteam ? ControllerInputPoller.Primary2DAxis(rNode) : _RightStick;
-    }
+        }
     }
 }
