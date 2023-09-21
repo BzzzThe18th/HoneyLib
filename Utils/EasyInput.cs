@@ -31,9 +31,7 @@ namespace HoneyLib.Utils
 
         void FixedUpdate()
         {
-            var isSteam = platform == "Steam";
-
-            switch (isSteam)
+            switch (platform.ToUpper().Contains("STEAM"))
             {
                 case true:
                     FaceButtonX = ControllerInputPoller.instance.leftControllerPrimaryButton;
