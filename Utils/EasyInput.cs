@@ -20,8 +20,17 @@ namespace HoneyLib.Utils
         public static bool RightGrip;
         public static bool LeftStickClick;
         public static Vector2 LeftStick;
+        public static Vector3 LeftVelocity;
+        public static Vector3 LeftPosLocal;
+        public static Vector3 LeftPos;
+        public static Quaternion LeftRot;
         public static bool RightStickClick;
         public static Vector2 RightStick;
+        public static Vector3 RightVelocity;
+        public static Vector3 RightPosLocal;
+        public static Vector3 RightPos;
+        public static Quaternion RightRot;
+
         public string platform { get; internal set; }
         
         [Obsolete("Input updating manually is now obselete for performance reasons. REMOVE THIS METHOD INVOCATION FROM YOUR CODE")]
@@ -66,6 +75,14 @@ namespace HoneyLib.Utils
                     break;
             }
             
+            LeftVelocity = GorillaLocomotion.Player.Instance.leftHandCenterVelocityTracker.GetLatestVelocity();
+            LeftPosLocal = GorillaLocomotion.Player.Instance.leftControllerTransform.localPosition;
+            LeftPos = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
+            LeftRot = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
+            RightVelocity = GorillaLocomotion.Player.Instance.rightHandCenterVelocityTracker.GetLatestVelocity();
+            RightPosLocal = GorillaLocomotion.Player.Instance.rightControllerTransform.localPosition;
+            RightPos = GorillaLocomotion.Player.Instance.rightControllerTransform.position;
+            RightRot = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
         }
     }
 }

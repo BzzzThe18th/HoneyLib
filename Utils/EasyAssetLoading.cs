@@ -40,5 +40,11 @@ namespace HoneyLib.Utils
             go.transform.rotation = Quaternion.Euler(eulers.x, eulers.y, eulers.z);
             return go;
         }
+        public static GameObject SetupAsset(Assembly a, string assetDirectory, string gameObjectName, Transform parent, bool keepWorldPos)
+        {
+            var go = InstantiateAsset(a, assetDirectory, gameObjectName);
+            go.transform.SetParent(parent, keepWorldPos);
+            return go;
+        }
     }
 }
