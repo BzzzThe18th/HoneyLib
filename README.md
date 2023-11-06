@@ -37,5 +37,5 @@ You can now use HoneyLib as you would any other namespace.
 I am aware the documenation is inconsistent and unprofessional, writing has always been a struggle for me.
 
 ## Feature requests / bug reports
-If you have any feature requests or bug reports, please contact me through discord at `Buzz Bzzz bzz BZZZ The 18th#0431`
+If you have any feature requests or bug reports, please contact me through discord at `buzzbb`
 This mod was made quickly and not tested very thoroughly, if something is wrong or seems wrong, please contact me.
