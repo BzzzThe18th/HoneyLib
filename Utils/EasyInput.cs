@@ -31,18 +31,18 @@ namespace HoneyLib.Utils
         public static Vector3 RightPos;
         public static Quaternion RightRot;
 
-        public string platform { get; internal set; }
+        public static string platform { get; internal set; }
         
         [Obsolete("Input updating manually is now obselete for performance reasons. REMOVE THIS METHOD INVOCATION FROM YOUR CODE")]
-        public static void UpdateInput()
-        {
-        }
+        public static void UpdateInput() { return; }
 
         void FixedUpdate()
         {
-            switch (platform.ToUpper().Contains("STEAM"))
+            // auth changed recently, "STEAM" for SteamVR, "OCULUS PC" for oculus rift (link), "OCULUS" for oculus quest
+            switch (platform.Contains("STEAM"))
             {
                 case true:
+                    // SteamVR
                     FaceButtonX = ControllerInputPoller.instance.leftControllerPrimaryButton;
                     FaceButtonY = ControllerInputPoller.instance.leftControllerSecondaryButton;
                     FaceButtonA = ControllerInputPoller.instance.rightControllerPrimaryButton;
@@ -57,6 +57,7 @@ namespace HoneyLib.Utils
                     RightStick = ControllerInputPoller.instance.rightControllerPrimary2DAxis;
                     break;
                 case false:
+                    // Oculus Rift
                     InputDevice lC = InputDevices.GetDeviceAtXRNode(lNode);
                     InputDevice rC = InputDevices.GetDeviceAtXRNode(rNode);
 
