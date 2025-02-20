@@ -20,7 +20,7 @@ namespace HoneyLib
         {
             yield return new WaitForSeconds(5f);
 
-            gameObject.AddComponent<Utils.EasyInput>().platform = (string)Traverse.Create(GorillaNetworking.PlayFabAuthenticator.instance).Field("platform").GetValue();
+            gameObject.AddComponent<Utils.EasyInput>().platform = (string)PlayFabAuthenticator.instance.platform.PlatformTag.ToUpper();
         }
     }
 }
