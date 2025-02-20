@@ -16,11 +16,12 @@ namespace HoneyLib.Utils
         public static PhotonView GetRigView(VRRig r)
         {
             PhotonView v = (PhotonView)AccessTools.Field(r.GetType(), "photonView").GetValue(r);
+
             if (v == null && GorillaGameManager.instance != null)
             {
-                Player p = (Player)AccessTools.Field(r.GetType(), "creator").GetValue(r);
-                v = GorillaGameManager.instance.FindVRRigForPlayer(p);
+                return null; // method used no longer exists, couldnt find a workaround
             }
+
             return v;
         }
     }

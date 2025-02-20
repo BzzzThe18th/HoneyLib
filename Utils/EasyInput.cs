@@ -31,7 +31,7 @@ namespace HoneyLib.Utils
         public static Vector3 RightPos;
         public static Quaternion RightRot;
 
-        public static string platform { get; internal set; }
+        // platform has been moved to HoneyLibrary.cs
         
         [Obsolete("Input updating manually is now obselete for performance reasons. REMOVE THIS METHOD INVOCATION FROM YOUR CODE")]
         public static void UpdateInput() { return; }
@@ -39,7 +39,7 @@ namespace HoneyLib.Utils
         void FixedUpdate()
         {
             // auth changed recently, "STEAM" for SteamVR, "OCULUS PC" for oculus rift (link), "OCULUS" for oculus quest
-            switch (platform.Contains("STEAM"))
+            switch (HoneyLib.platform.ToUpper().Contains("STEAM"))
             {
                 case true:
                     // SteamVR
