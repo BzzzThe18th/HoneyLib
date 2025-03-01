@@ -1,13 +1,17 @@
 ﻿using BepInEx;
 using HarmonyLib;
+using GorillaLocomotion;
 using System.Collections;
 using UnityEngine;
+using GorillaNetworking;
 
 namespace HoneyLib
 {
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class HoneyLib : BaseUnityPlugin
     {
+        public static string platform { get; private set; }
+
         void Awake()
         {
             gameObject.AddComponent<Events.EventListener>();
@@ -20,7 +24,7 @@ namespace HoneyLib
         {
             yield return new WaitForSeconds(5f);
 
-            gameObject.AddComponent<Utils.EasyInput>().platform = (string)Traverse.Create(GorillaNetworking.PlayFabAuthenticator.instance).Field("platform").GetValue();
+            platform = PlayFabAuthenticator.instance.platform.PlatformTag;
         }
     }
 }
