@@ -4,6 +4,7 @@ using GorillaLocomotion;
 using System.Collections;
 using UnityEngine;
 using GorillaNetworking;
+using HoneyLib.Utils;
 
 namespace HoneyLib
 {
@@ -14,7 +15,8 @@ namespace HoneyLib
 
         void Awake()
         {
-            gameObject.AddComponent<Events.EventListener>();
+            // gameObject.AddComponent<Events.EventListener>();
+            gameObject.AddComponent<EasyInput>();
             HarmonyPatches.ApplyHarmonyPatches();
 
             StartCoroutine(DelayAwake());

@@ -76,14 +76,14 @@ namespace HoneyLib.Utils
                     break;
             }
             
-            LeftVelocity = GorillaLocomotion.Player.Instance.leftHandCenterVelocityTracker.GetLatestVelocity();
-            LeftPosLocal = GorillaLocomotion.Player.Instance.leftControllerTransform.localPosition;
-            LeftPos = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
-            LeftRot = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
-            RightVelocity = GorillaLocomotion.Player.Instance.rightHandCenterVelocityTracker.GetLatestVelocity();
-            RightPosLocal = GorillaLocomotion.Player.Instance.rightControllerTransform.localPosition;
-            RightPos = GorillaLocomotion.Player.Instance.rightControllerTransform.position;
-            RightRot = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
+            LeftVelocity = GorillaLocomotion.GTPlayer.Instance.leftHandCenterVelocityTracker.GetLatestVelocity();
+            LeftPosLocal = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.localPosition;
+            LeftPos = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
+            LeftRot = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.rotation;
+            RightVelocity = GorillaLocomotion.GTPlayer.Instance.rightHandCenterVelocityTracker.GetLatestVelocity();
+            RightPosLocal = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.localPosition;
+            RightPos = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
+            RightRot = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.rotation;
         }
     }
 }

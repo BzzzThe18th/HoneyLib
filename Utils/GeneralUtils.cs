@@ -12,7 +12,7 @@ namespace HoneyLib.Utils
 
         public static Hashtable GetPlayerProperties(PhotonView p) => p.Owner.CustomProperties;
 
-        public static Hashtable GetPlayerProperties(VRRig r) => GetRigView(r).Owner.CustomProperties;
+        // public static Hashtable GetPlayerProperties(VRRig r) => GetRigView(r).Owner.CustomProperties;
 
         [Obsolete("Currently obsolete, will return null")]
         public static PhotonView GetRigView(VRRig r)
