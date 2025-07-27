@@ -5,6 +5,6 @@ namespace HoneyLib
     {
         public const string GUID = "com.buzzbzzzbzzbzzzthe18th.gorillatag.HoneyLib";
         public const string Name = "HoneyLib";
-        public const string Version = "1.1.3";
+        public const string Version = "1.1.4";
     }
 }
