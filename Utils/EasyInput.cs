@@ -32,12 +32,13 @@ namespace HoneyLib.Utils
         public static Quaternion RightRot;
 
         // platform has been moved to HoneyLibrary.cs
-        
+
         [Obsolete("Input updating manually is now obselete for performance reasons. REMOVE THIS METHOD INVOCATION FROM YOUR CODE")]
         public static void UpdateInput() { return; }
 
         void FixedUpdate()
         {
+            if (HoneyLib.platform.IsNullOrEmpty() || !GorillaLocomotion.GTPlayer.Instance) return;
             // auth changed recently, "STEAM" for SteamVR, "OCULUS PC" for oculus rift (link), "OCULUS" for oculus quest
             switch (HoneyLib.platform.ToUpper().Contains("STEAM"))
             {
@@ -51,13 +52,19 @@ namespace HoneyLib.Utils
                     LeftGrip = ControllerInputPoller.instance.leftControllerGripFloat > 0.5f;
                     RightTrigger = ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f;
                     RightGrip = ControllerInputPoller.instance.rightControllerGripFloat > 0.5f;
-                    LeftStickClick = SteamVR_Actions.gorillaTag_LeftJoystickClick.state;
-                    LeftStick = SteamVR_Actions.gorillaTag_LeftJoystick2DAxis.axis;
-                    RightStickClick = SteamVR_Actions.gorillaTag_RightJoystickClick.state;
-                    RightStick = ControllerInputPoller.instance.rightControllerPrimary2DAxis;
+
+                    // If actions are unitialized, do not attempt to assign joystick states
+                    if (HoneyLib.steamVrActionsInit)
+                    {
+                        LeftStickClick = SteamVR_Actions.gorillaTag_LeftJoystickClick.state;
+                        LeftStick = SteamVR_Actions.gorillaTag_LeftJoystick2DAxis.axis;
+                        RightStickClick = SteamVR_Actions.gorillaTag_RightJoystickClick.state;
+                        RightStick = SteamVR_Actions.gorillaTag_RightJoystick2DAxis.axis;
+                    }
                     break;
                 case false:
                     // Oculus Rift
+                    // buzz - this is untested :(( I cannot use the oculus rift app, so I'll have to wait for a bug report
                     InputDevice lC = InputDevices.GetDeviceAtXRNode(lNode);
                     InputDevice rC = InputDevices.GetDeviceAtXRNode(rNode);
 
