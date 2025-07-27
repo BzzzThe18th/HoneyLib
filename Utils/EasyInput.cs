@@ -38,9 +38,9 @@ namespace HoneyLib.Utils
 
         void FixedUpdate()
         {
-            if (HoneyLib.platform.IsNullOrEmpty() || !GorillaLocomotion.GTPlayer.Instance) return;
-            // auth changed recently, "STEAM" for SteamVR, "OCULUS PC" for oculus rift (link), "OCULUS" for oculus quest
-            switch (HoneyLib.platform.ToUpper().Contains("STEAM"))
+            if (HoneyLib.platform.PlatformTag.IsNullOrEmpty() || !GorillaLocomotion.GTPlayer.Instance) return;
+            // auth changed recently, "Steam" for SteamVR, "PC" for oculus rift (link), "Quest" for oculus quest
+            switch (HoneyLib.platform.PlatformTag.ToUpper().Contains("STEAM"))
             {
                 case true:
                     // SteamVR
@@ -53,20 +53,32 @@ namespace HoneyLib.Utils
                     RightTrigger = ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f;
                     RightGrip = ControllerInputPoller.instance.rightControllerGripFloat > 0.5f;
 
+                    // The SteamVR actions check has been removed for oculus software compatibility
                     // If actions are unitialized, do not attempt to assign joystick states
-                    if (HoneyLib.steamVrActionsInit)
-                    {
-                        LeftStickClick = SteamVR_Actions.gorillaTag_LeftJoystickClick.state;
-                        LeftStick = SteamVR_Actions.gorillaTag_LeftJoystick2DAxis.axis;
-                        RightStickClick = SteamVR_Actions.gorillaTag_RightJoystickClick.state;
-                        RightStick = SteamVR_Actions.gorillaTag_RightJoystick2DAxis.axis;
-                    }
+                    LeftStickClick = SteamVR_Actions.gorillaTag_LeftJoystickClick.state;
+                    LeftStick = SteamVR_Actions.gorillaTag_LeftJoystick2DAxis.axis;
+                    RightStickClick = SteamVR_Actions.gorillaTag_RightJoystickClick.state;
+                    RightStick = SteamVR_Actions.gorillaTag_RightJoystick2DAxis.axis;
                     break;
                 case false:
                     // Oculus Rift
                     // buzz - this is untested :(( I cannot use the oculus rift app, so I'll have to wait for a bug report
                     InputDevice lC = InputDevices.GetDeviceAtXRNode(lNode);
                     InputDevice rC = InputDevices.GetDeviceAtXRNode(rNode);
+                    
+                    // backups
+                    // lC.TryGetFeatureValue(CommonUsages.primaryButton, out FaceButtonX);
+                    // lC.TryGetFeatureValue(CommonUsages.secondaryButton, out FaceButtonY);
+                    // rC.TryGetFeatureValue(CommonUsages.primaryButton, out FaceButtonA);
+                    // rC.TryGetFeatureValue(CommonUsages.secondaryButton, out FaceButtonB);
+                    // lC.TryGetFeatureValue(CommonUsages.triggerButton, out LeftTrigger);
+                    // lC.TryGetFeatureValue(CommonUsages.gripButton, out LeftGrip);
+                    // rC.TryGetFeatureValue(CommonUsages.triggerButton, out RightTrigger);
+                    // rC.TryGetFeatureValue(CommonUsages.gripButton, out RightGrip);
+                    // lC.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out LeftStickClick);
+                    // lC.TryGetFeatureValue(CommonUsages.primary2DAxis, out LeftStick);
+                    // rC.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out RightStickClick);
+                    // rC.TryGetFeatureValue(CommonUsages.primary2DAxis, out RightStick);
 
                     FaceButtonX = ControllerInputPoller.instance.leftControllerPrimaryButton;
                     FaceButtonY = ControllerInputPoller.instance.leftControllerSecondaryButton;

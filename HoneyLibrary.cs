@@ -1,9 +1,4 @@
 ﻿using BepInEx;
-using HarmonyLib;
-using GorillaLocomotion;
-using System.Collections;
-using UnityEngine;
-using GorillaNetworking;
 using HoneyLib.Utils;
 
 namespace HoneyLib
@@ -11,8 +6,8 @@ namespace HoneyLib
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class HoneyLib : BaseUnityPlugin
     {
-        public static string platform;
-        public static bool steamVrActionsInit = false;
+        public static PlatformTagJoin platform;
+        // public static bool steamVrActionsInit = false;
 
         void Awake()
         {

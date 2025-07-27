@@ -10,7 +10,7 @@ namespace HoneyLib.Patches
         public static void Postfix(PlayFabAuthenticator __instance)
         {
             // Assign platform tag on authenticator init to avoid race conditions from the old awake delay code
-            HoneyLib.platform = __instance.platform.PlatformTag;
+            HoneyLib.platform = __instance.platform;
         }
     }
 }
