@@ -4,7 +4,7 @@ using Valve.VR;
 namespace HoneyLib.Patches
 {
     [HarmonyPatch(typeof(SteamVR_Actions))]
-    [HarmonyPatch("InitializeActionaArrays", MethodType.Normal)]
+    [HarmonyPatch("InitializeActionArrays", MethodType.Normal)]
     static class VRActionsInitPatch
     {
         public static void Postfix()
