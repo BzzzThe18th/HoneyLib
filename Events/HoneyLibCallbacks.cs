@@ -8,18 +8,20 @@ namespace HoneyLib.Events
         Events events = new Events();
         public override void OnJoinedRoom()
         {
+            string gamemode = "unassigned";
+                
+            if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("gameMode", out var gamemodeObject))
+                gamemode = gamemodeObject as string;
+
             if (Events.JoinedRoom != null)
             {
-                string gamemode = "unassigned";
-                if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("gameMode", out var gamemodeObject))
-                {
-                    gamemode = gamemodeObject as string;
-                }
                 RoomArgs args = new RoomArgs();
                 args.gamemode = gamemode;
                 events.TriggerJoinedRoom(args);
                 Utils.RoomUtils.RoomUtils.InRoom = true;
             }
+
+            Events.OnJoinedRoom(PhotonNetwork.CurrentRoom.Name, gamemode);
         }
 
         public override void OnLeftRoom()
@@ -29,6 +31,8 @@ namespace HoneyLib.Events
                 events.TriggerLeftRoom();
                 Utils.RoomUtils.RoomUtils.InRoom = false;
             }
+
+            Events.OnLeaveRoom();
         }
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -41,6 +45,8 @@ namespace HoneyLib.Events
 
                 events.TriggerOtherLeftRoom(args);
             }
+
+            Events.OnOtherLeaveRoom(otherPlayer);
         }
     }
 }

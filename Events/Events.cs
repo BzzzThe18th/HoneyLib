@@ -22,6 +22,10 @@ namespace HoneyLib.Events
         public static EventHandler LeftRoom;
         public static EventHandler<OtherLeaveJoinArgs> OtherLeftRoom;
 
+        public static event Action OnEnterRoom = delegate { };
+        public static event Action OnLeaveRoom = delegate { };
+        public static event Action OnOtherLeaveRoom = delegate { };
+
         // public virtual void TriggerInfectionTagMaster(InfectionTagMasterArgs args) => InfectionTagMaster?.SafeInvoke(this, args);
         // public virtual void TriggerPreInfectionTagMaster(InfectionTagMasterArgs args) => PreInfectionTagMaster?.SafeInvoke(this, args);
         // public virtual void TriggerInfectionTagEvent(InfectionTagEventArgs args) => InfectionTagEvent?.SafeInvoke(this, args);
