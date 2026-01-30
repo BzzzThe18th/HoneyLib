@@ -38,7 +38,7 @@ namespace HoneyLib.Utils
 
         void FixedUpdate()
         {
-            if (HoneyLib.platform.PlatformTag.IsNullOrEmpty() || !GorillaLocomotion.GTPlayer.Instance) return;
+            if (!HoneyLib.platform || !GorillaLocomotion.GTPlayer.Instance) return;
             // auth changed recently, "Steam" for SteamVR, "PC" for oculus rift (link), "Quest" for oculus quest
             switch (HoneyLib.platform.PlatformTag.ToUpper().Contains("STEAM"))
             {
@@ -95,14 +95,14 @@ namespace HoneyLib.Utils
                     break;
             }
             
-            LeftVelocity = GorillaLocomotion.GTPlayer.Instance.leftHandCenterVelocityTracker.GetLatestVelocity();
-            LeftPosLocal = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.localPosition;
-            LeftPos = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-            LeftRot = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.rotation;
-            RightVelocity = GorillaLocomotion.GTPlayer.Instance.rightHandCenterVelocityTracker.GetLatestVelocity();
-            RightPosLocal = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.localPosition;
-            RightPos = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-            RightRot = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.rotation;
+            LeftVelocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.velocityTracker.GetLatestVelocity();
+            LeftPosLocal = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.localPosition;
+            LeftPos = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
+            LeftRot = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.rotation;
+            RightVelocity = GorillaLocomotion.GTPlayer.Instance.RightHand.velocityTracker.GetLatestVelocity();
+            RightPosLocal = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.localPosition;
+            RightPos = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
+            RightRot = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.rotation;
         }
     }
 }
